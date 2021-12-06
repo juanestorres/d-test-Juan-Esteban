@@ -5,7 +5,7 @@ import { ImageNodeModel } from './ImageNodeModel';
 export class ImageNodeWidget extends React.Component {
   static defaultProps = {
     node: null,
-    color: 'rgb(224, 98, 20)'
+    color: 'rgb(224, 98, 20)',
   };
 
   onRemove() {
@@ -19,7 +19,8 @@ export class ImageNodeWidget extends React.Component {
     let inputNode = node;
 
     if (displayOnly) {
-      inputNode = new ImageNodeModel(node.name, color);
+      //Create node with the new argument. Juanes
+      inputNode = new ImageNodeModel(node.name, color, node.imgUrl);
     }
 
     return inputNode.getInPort ? <RJD.DefaultPortLabel model={inputNode.getInPort()} key='in-port' /> : null;
@@ -30,7 +31,8 @@ export class ImageNodeWidget extends React.Component {
     let outputNode = node;
 
     if (displayOnly) {
-      outputNode = new ImageNodeModel(node.name, color);
+      //Create node with the new argument. Juanes
+      outputNode = new ImageNodeModel(node.name, color, node.imgUrl);
     }
 
     return outputNode.getOutPort ? <RJD.DefaultPortLabel model={outputNode.getOutPort()} key='out-port' /> : null;
@@ -38,7 +40,7 @@ export class ImageNodeWidget extends React.Component {
 
   render() {
     const { node, displayOnly, color: displayColor } = this.props;
-    const { name, color } = node;
+    const { name, color, imgUrl } = node;
     const style = {};
     if (color || displayColor) {
       style.background = color || displayColor;
@@ -46,16 +48,28 @@ export class ImageNodeWidget extends React.Component {
 
     return (
       <div className='basic-node' style={style}>
-        <div className='title'>
-          <div className='name'>
-            image
-          </div>
-          {!displayOnly ? <div className='fa fa-close' onClick={this.onRemove.bind(this)} /> : null}
-        </div>
+        {/* Added a new div to put the image that comes from imgUrl. Juanes */}
         <div className='ports'>
           <div className='in'>
             {this.getInPort()}
           </div>
+        </div>
+        <div>
+          <div className='image'>
+            <img src={imgUrl} alt="Default"></img>
+          </div>
+          <div className='title'>
+            <div className='name'>
+              {/* Display the node's name instead of the default thext 'image' Juanes*/}
+              {name}
+            </div>
+            {!displayOnly ? <div className='fa fa-close' onClick={this.onRemove.bind(this)} /> : null}
+          </div>
+        </div>
+        <div className='ports'>
+          {/* <div className='in'>
+            {this.getInPort()}
+          </div> */}
           <div className='out'>
             {this.getOutPort()}
           </div>

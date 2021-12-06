@@ -4,7 +4,7 @@
   display: flex;
   cursor: move;
   overflow: hidden;
-  background-color: #fff !important;
+  background-color: #000 !important; //Change diagram canvas to blackcolor. 
   background-size: 50px 50px;
   background-image:
           linear-gradient(0deg, transparent 24%, rgba(100, 100, 100, 0.05) 25%,
@@ -74,8 +74,10 @@
   }
 
   path{
-    fill:none;
+    //Change link color to match wireframe
+    fill: none;
     pointer-events:all;
+    stroke: #2F3BA7;
 
     &.selected {
       stroke: rgb(0,192,255) !important;
@@ -85,8 +87,9 @@
   }
 
   .port {
-    width: 15px;
-    height: 15px;
+    //Changed port size to math wireframe
+    width: 10px;
+    height: 10px;
     background: rgba(white,0.1);
     &:hover,&.selected {
       background: rgb(192,255,0);
@@ -94,15 +97,16 @@
   }
 
   .basic-node {
-    background-color: rgb(30,30,30);
-    border-radius: 5px;
+    z-index: 2;
+    background-color: #000;
+    border-radius: 2px;
     font-family:Arial;
     color: white;
-    border: solid 2px black;
+    //border: solid 2px black;
     overflow: visible;
     font-size: 12px;
     box-shadow: 0 0 10px rgba(black,0.5);
-
+    
     .title {
       background: rgba(black,0.3);
       display: flex;

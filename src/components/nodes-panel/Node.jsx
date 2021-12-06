@@ -4,10 +4,11 @@ import { ImageNodeWidget } from '../nodes/imagenode/ImageNodeWidget';
 
 class Node extends React.Component {
     renderNode() {
-        const { type, color } = this.props;
+        //Obtain name and imgUrl from props to create the node. Juanes
+        const { type, color, name, imgUrl } = this.props;
 
         if (type === 'imagenode') {
-            return <ImageNodeWidget node={{ name: 'Image node' }} color={color} displayOnly/>;
+            return <ImageNodeWidget node={{ name: name, imgUrl: imgUrl }} color= 'rgb(32, 32, 32)' displayOnly />;
         }
         
         console.warn('Unknown node type');
@@ -16,10 +17,11 @@ class Node extends React.Component {
     }
 
     render() {
-        const { type, color } = this.props;
-
+        const { type, color, name, imgUrl } = this.props;
+        
         return (
-            <DragWrapper type={type} color={color} style={{ display: 'inline-block' }}>
+            //Obtain name and imgUrl from props to create the node model used in the dragging process. Juanes
+            <DragWrapper type={type} color={color} style={{ display: 'inline-block' }} name={name} imgUrl = {imgUrl}>
                 {this.renderNode()}
             </DragWrapper>
         );

@@ -22,7 +22,8 @@ const target = {
         let node;
 
         if (item.type === 'imagenode') {
-            node = new ImageNodeModel('Image Node', 'rgb(124, 28, 120)', {
+            //Crate new imageNodeModel with the new attribute (imgUrl). Juanes
+            node = new ImageNodeModel(item.name, item.color,  {
                 title: '',
                 body: '',
                 video: {
@@ -36,7 +37,7 @@ const target = {
                     title: '',
                     body: ''
                 }
-            });
+            }  ,item.imgUrl);
         }
 
         node.x = x;

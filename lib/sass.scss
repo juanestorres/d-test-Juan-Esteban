@@ -74,8 +74,9 @@
   }
 
   .port {
-    width: 15px;
-    height: 15px;
+    //Reduce de port size to match the wireframe. Juanes
+    width: 5px;
+    height: 5px;
     background: rgba(white,0.1);
     &:hover,&.selected {
       background: rgb(192,255,0);
